@@ -1,54 +1,42 @@
+function countingSortForRadix(arr, exp) {
+    let n = arr.length;
+    let output = new Array(n).fill(0);
+    let count = new Array(10).fill(0); 
 
-
-function countSort(arr) {
-
-    let max = arr[0]
-
-    for(let i = 1; i<arr.length; i++){
-        if(max < arr[i]){
-            max = arr[i]
-        }
+    // count occurrences
+    for (let i = 0; i < n; i++) {
+        let digit = Math.floor(arr[i] / exp) % 10;
+        count[digit]++;
     }
 
-    const countArr = new Array(max+1).fill(0)
-
-
-    for(let i = 0; i<arr.length; i++){
-
-        countArr[arr[i]]++
-
+    // prefix sum (important for stability)
+    for (let i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
     }
 
-    let res = []
-
-    for(let i = 0; i<countArr.length; i++){
-
-        while(countArr[i] > 0){
-            res.push(i)
-            countArr[i]--
-        }
+    // build output array (right to left for stability)
+    for (let i = n - 1; i >= 0; i--) {
+        let digit = Math.floor(arr[i] / exp) % 10;
+        output[count[digit] - 1] = arr[i];
+        count[digit]--;
     }
 
-    return res
-
+    return output;
 }
 
 function radixSort(arr) {
-
-    let max = Math.max(...arr)
-
-    let exp = 1
+    let max = Math.max(...arr);
+    let exp = 1;
 
     while (Math.floor(max / exp) > 0) {
-        arr = countingSortForRadix(arr, exp)
-        exp *= 10
+        arr = countingSortForRadix(arr, exp);
+        exp *= 10;
     }
 
-    return arr
+    return arr;
 }
 
-
 // test
-const arr = [170, 45, 75, 90, 802, 24, 2, 66]
+const arr = [170, 45, 75, 90, 802, 24, 2, 66];
 
-console.log(radixSort(arr))
+console.log(radixSort(arr));
