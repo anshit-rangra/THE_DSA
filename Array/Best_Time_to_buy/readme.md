@@ -1,16 +1,22 @@
-in the bruteforce approach just nested loop check every difference and set it to max
 
-but in the best approach the time complexity should be O(n)
 
-how it works 
+## Best Time to Buy and Sell Stock
 
-just a loop start from second element to last element of the array
+### Brute Force Approach
+Use a nested loop to check every possible pair of buy and sell days. For each pair, calculate the difference and keep track of the maximum profit found.
 
-use two variables one is MAX and second is MinVal
+**Time Complexity:** $O(n^2)$
 
-initilize MAX = 0 and MinVal = arr[0] first element of array;
+### Optimal Approach (O(n) Time)
+1. Initialize two variables:
+	- `MAX = 0` (to store the maximum profit)
+	- `MinVal = arr[0]` (to store the minimum price seen so far)
+2. Loop from the second element to the last element of the array:
+	- If the current price is less than `MinVal`, update `MinVal`.
+	- Otherwise, update `MAX` to be the maximum of `MAX` and `arr[i] - MinVal`.
+3. After the loop, `MAX` contains the maximum profit.
 
-now just a conditional statement first your aim is to find smallest if find MinVal should change and if not found then 
-change MAX to max amoung MAX or arr[i] - MinVal
-
-and you got the answer
+**Explanation:**
+- The goal is to always keep track of the lowest price so far (`MinVal`).
+- For each price, check if selling at that price (after buying at `MinVal`) gives a better profit than the current `MAX`.
+- This ensures a single pass through the array with $O(n)$ time complexity.
