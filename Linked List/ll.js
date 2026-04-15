@@ -64,8 +64,15 @@ class LinkedList {
             return;
         }
 
+
+        if(this.head.next === null){
+            this.head = null;
+            this.size--;
+            return;
+        }
+
         let temp = this.head;
-        while(temp.next && temp.next.next !== null){
+        while(temp.next.next !== null){
             temp = temp.next;
         }
         temp.next = null;
@@ -75,6 +82,11 @@ class LinkedList {
     }
 
     insertAtIndex(val, index){
+
+        if(index === 0){
+            this.insertAtFirst(val)
+            return;
+        }
         
         if(index < 0 || index > this.size){
             console.log("Not possible")
@@ -97,6 +109,32 @@ class LinkedList {
             newNode.next = temp.next;
 
             temp.next = newNode
+
+    }
+
+    deleteAtIndex(index){
+
+        if(index === 0){
+            this.deleteAtFirst();
+            return;
+        }
+
+        if(index < 0 || index > this.size){
+            console.log("Invalid index")
+            return;
+        }
+
+        if(this.head === null){
+            console.log("Empty Linked List")
+            return;
+        }
+
+        let temp = this.head;
+        for(let i = 0; i<index-1; i++){
+            temp = temp.next;
+        }
+
+        temp.next = temp.next?.next || null;
 
     }
 
