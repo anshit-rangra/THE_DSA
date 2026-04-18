@@ -1,6 +1,3 @@
-
-
-
 # LC 234: Palindrome Linked List
 
 This problem asks whether a singly linked list is a palindrome (reads the same forwards and backwards).
