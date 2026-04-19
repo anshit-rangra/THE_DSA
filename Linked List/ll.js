@@ -114,6 +114,7 @@ class LinkedList {
 
     deleteAtIndex(index){
 
+        
         if(index === 0){
             this.deleteAtFirst();
             return;
