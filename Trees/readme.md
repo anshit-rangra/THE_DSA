@@ -1,4 +1,3 @@
-
 # Trees: An Overview
 
 A **tree** is a fundamental non-linear data structure consisting of nodes connected by edges. Unlike arrays, linked lists, or other linear structures, trees represent hierarchical relationships.
