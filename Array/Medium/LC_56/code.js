@@ -1,4 +1,5 @@
 
+
 function mergeInterval(intervals){
 
     if(intervals.length <= 1) return intervals;
