@@ -8,4 +8,4 @@ function printInvertedRightTriangle(n) {
     }
 }
 
-printInvertedRightTriangle()
+printInvertedRightTriangle(5)

@@ -9,4 +9,4 @@ function printRightTriangle(n) {
     }
 }
 
-printRightTriangle();
+printRightTriangle(5);
